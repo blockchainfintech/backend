@@ -8,7 +8,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.sqlite3'
 db = SQLAlchemy(app)
 
 
-class Location(db.Model):
+class Nodes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True, nullable=False)
     latitude = db.Column(db.String(80), unique=True, nullable=False)
