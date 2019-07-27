@@ -1,12 +1,8 @@
 from flask import Flask, escape, request, Blueprint
-from database import Location
+from database import Node
 
+# Initialise blueprint
 node_connection = Blueprint("node_connection", __name__)
-
-# @app.route('/congestion')
-# def congestion():
-# 	name = request.args.get("name")
-# 	return f'Hello, {escape(name)}!'
 
 @node_connection.route('/push_congestion', methods=['POST'])
 def push_congestion():
