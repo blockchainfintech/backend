@@ -25,8 +25,9 @@ def get_congestion():
 		Node.longitude >= tl_coord[1], 
 		Node.longitude <= br_coord[1]).all()
 
-	i.count = i.count/i.maxCount
-
+	# ""normalise"" results
+	for i in results:
+		i.count = i.count / i.maxCount
 	
 	# Return results
 	resObj = {"nodes": [i.toDict() for i in results]}
