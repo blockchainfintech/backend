@@ -18,4 +18,14 @@ def get_congestion():
 		float(request.args.get("long2"))
 	)
 
-	# Query database 
+	# Query database
+	results = Node.query.filter(
+		Node.latitude <= tl_coord[0], 
+		Node.latitude >= br_coord[0], 
+		Node.longitude >= tl_coord[1], 
+		Node.longitude <= br_coord[1]).all()
+	
+	# Return results
+	resObj = {"nodes": [i.toDict() for i in results]}
+
+	return resObj

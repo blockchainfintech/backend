@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+import json
 
 # Initialise database
 db = SQLAlchemy()
@@ -13,6 +14,16 @@ class Node(db.Model):
     
     def __repr__(self):
         return '<name %r>' % self.name
-        
+
+    def toDict(self):
+        return {
+            "id":        self.id,
+            "name":      self.name,
+            "latitude":  self.latitude,
+            "longitude": self.longitude,
+            "nodeId":    self.nodeId,
+            "count":     self.count
+        }
+
 #>>> from database import db
 #>>> db.create_all()
