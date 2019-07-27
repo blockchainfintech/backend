@@ -13,6 +13,8 @@ def push_congestion():
 	data = request.get_json()
 	node = Node.query.filter_by(nodeId = data["nodeId"]).first()
 	node.count = data["count"]
+	if node.count > node.maxCount:
+		node.maxCount = node.count
 	db.session.commit()
 	return ''
 
